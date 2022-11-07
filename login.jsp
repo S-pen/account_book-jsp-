@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="login_design.css"/>
 </head>
 <body>
-	<img class = "logo_image" src = "Distopia_Load_To_Utopia.jpg"> <br><br>
+	<img class = "logo_image" src = "Group 3.jpg"> <br><br>
     <div class = "login_page">
         <div class = "user_id">
             <p> <input type = "text" name = "ID" placeholder="로그인"> </p>

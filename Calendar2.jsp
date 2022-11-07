@@ -6,8 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>calendar</title>
 <script type="text/javascript">
-	function popup() {
+	function income_popup() {
 		window.open("WriteIncome.jsp", "income",
+				"width=400, height=300, top=150, left=200");
+	}
+
+	function spend_popup() {
+		window.open("WriteSpend.jsp", "spend",
 				"width=400, height=300, top=150, left=200");
 	}
 </script>
@@ -58,18 +63,16 @@
 					%>월 <a
 					href="Calendar.jsp?year=<%out.print(year);%>&month=<%out.print(month + 1);%>">▶</a>
 				</td>
-				<td align=right width=200>
-					<%
-					out.print(currentYear + "-" + (currentMonth + 1) + "-" + currentDate);
-					%>
-				</td>
+				<td align=right width=200><input onclick="income_popup()"
+					type="button" value="수입"> <input onclick="spend_popup()"
+					type="button" value="지출"></td>
 			</tr>
 
 		</table>
 		<table border=1 cellspacing=0>
 			<!-- 달력 부분 -->
 			<tr>
-				<td style="color: red" width=100>일</td>
+				<td style="color=red" width=100>일</td>
 				<!-- 일=1 -->
 				<td width=100>월</td>
 				<!-- 월=2 -->
@@ -81,7 +84,7 @@
 				<!-- 목=5 -->
 				<td width=100>금</td>
 				<!-- 금=6 -->
-				<td style="color: blue" width=100>토</td>
+				<td width=100>토</td>
 				<!-- 토=7 -->
 			</tr>
 			<tr height=70>
@@ -98,33 +101,11 @@
 					}
 				}
 				for (int i = 1; i <= end; i++) { //날짜출력
-					if (br % 7 == 0) {
-						if (i==currentDate){
-							out.println("<td onClick=\"popup()\"style=color:red; \"font-weight:bold;\">" + i + "</td>");
-						} else {
-							out.println("<td onClick=\"popup()\"style=color:red;>" + i + "</td>");
-						}
-						
-					} else if (br % 7 == 6) {
-						if (i==currentDate){
-							out.println("<td onClick=\"popup()\"style=color:blue; \"font-weight:bold;\">" + i + "</td>");
-						} else {
-							out.println("<td onClick=\"popup()\"style=color:blue;>" + i + "</td>");
-						}
-						
-					} else {
-						if(i==currentDate) {
-							out.println("<td onClick=\"popup()\"style=\"font-weight:bold;\">" + i + "</td>");
-						} else {
-							out.println("<td onClick=\"popup()\">" + i + "</td>");
-						}
-						
-					}
+					out.println("<td>" + i + "</td>");
 					br++;
 					if ((br % 7) == 0 && i != end) {
 						out.println("</tr><tr height=70>");
 					}
-					
 				}
 				while ((br++) % 7 != 0) //말일 이후 빈칸출력
 					out.println("<td>&nbsp;</td>");
